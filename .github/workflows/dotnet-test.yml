@@ -1,0 +1,32 @@
+name: .NET Tests
+
+on:
+  push:
+    branches: [ "main", "master" ] # รันเมื่อ push โค้ดเข้ากิ่งหลัก
+  pull_request:
+    branches: [ "main", "master" ] # รันเมื่อมีการขอ merge โค้ด
+
+jobs:
+  build-and-test:
+    # 🌟 สำคัญมาก: ต้องใช้ Windows เพราะโปรเจกต์เราเป็น net10.0-windows (WinForms)
+    runs-on: windows-latest 
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        # ระบุเวอร์ชัน .NET ที่คุณใช้ (ตามที่เห็นจาก Error ก่อนหน้าคือ 10.0)
+        dotnet-version: '10.0.x' 
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build Project
+      run: dotnet build --no-restore
+
+    - name: Run Tests
+      # รันโปรเจกต์เทสและแสดงผลลัพธ์
+      run: dotnet test --no-build --verbosity normal
