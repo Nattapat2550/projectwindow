@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../GTYApp.Tests/GTYApp.Tests.csproj" Id="41ffc9a1-deb4-4cb4-a49a-7cb7ec8c85be" />
+  <Project Path="GTYApp.csproj" />
+</Solution>

@@ -1,0 +1,35 @@
+## [ Visual Studio ]
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+
+## [ .NET Core / .NET ]
+project.lock.json
+project.fragment.lock.json
+artifacts/
+TestResults/
+
+## [ User-specific files ]
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.opendb
+*.dbmdl
+
+## [ Backup files ]
+*.bak
+*.[Cc]ache
+*.log
+
+## [ OS related ]
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## [ Environment variables ]
+appsettings.Development.json
+.env
