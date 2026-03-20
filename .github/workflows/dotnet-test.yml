@@ -18,15 +18,16 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        # ระบุเวอร์ชัน .NET ที่คุณใช้ (ตามที่เห็นจาก Error ก่อนหน้าคือ 10.0)
         dotnet-version: '10.0.x' 
 
     - name: Restore dependencies
-      run: dotnet restore
+      # เพิ่ม path ไปยังไฟล์ test project (หรือไฟล์ .slnx ถ้าไฟล์ solution ของคุณครอบคลุม test project ด้วย)
+      run: dotnet restore GTYApp.Tests/GTYApp.Tests.csproj
 
     - name: Build Project
-      run: dotnet build --no-restore
+      # เพิ่ม path ไปยังไฟล์ test project 
+      run: dotnet build GTYApp.Tests/GTYApp.Tests.csproj --no-restore
 
     - name: Run Tests
-      # รันโปรเจกต์เทสและแสดงผลลัพธ์
-      run: dotnet test --no-build --verbosity normal
+      # เพิ่ม path ไปยังไฟล์ test project 
+      run: dotnet test GTYApp.Tests/GTYApp.Tests.csproj --no-build --verbosity normal
